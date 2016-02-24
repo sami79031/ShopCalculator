@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.samurai.delete.ScrollingActivity">
+
+    <LinearLayout
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:textColor="@color/dark_green"
+            android:textSize="17sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Тук можеш да пресметнеш приблизителна цена за една закуска"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expensesCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardCornerRadius="@dimen/card_corner_radius"
+            card_view:cardElevation="@dimen/card_elevation">
+
+
+            <FrameLayout
+                android:layout_marginTop="20dp"
+                android:id="@+id/expensesId"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:transitionName="tNameHolder"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Въведи всички разходи за един мецес"
+                    android:layout_gravity="center_horizontal|top" />
+
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Наем/Електричество/вода/работна ръка/осигуровки т.н."
+                    android:layout_gravity="center" />
+
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/expesesEditId"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/light_blue"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom" />
+            </FrameLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/materialsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardCornerRadius="@dimen/card_corner_radius"
+            card_view:cardElevation="@dimen/card_elevation">
+
+
+            <FrameLayout
+                android:layout_marginTop="20dp"
+                android:id="@+id/materialHolder"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:transitionName="tNameHolder"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Въведи изразходен материал - брашно/олио/кашкавал т.н. "
+                    android:layout_gravity="center_horizontal|top" />
+
+                <TextView
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Приблизителна цена за 100 закуски"
+                    android:layout_gravity="center" />
+
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/materialEditId"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/light_blue"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom"/>
+            </FrameLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/wokeddaysCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardCornerRadius="@dimen/card_corner_radius"
+            card_view:cardElevation="@dimen/card_elevation">
+
+
+            <FrameLayout
+                android:layout_marginTop="20dp"
+                android:id="@+id/workdaysHolder"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:transitionName="tNameHolder"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Работни дни"
+                    android:layout_gravity="center_horizontal|top" />
+
+                <TextView
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Колко дена в месеца работиш?"
+                    android:layout_gravity="center" />
+
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/workedaysEditId"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/light_blue"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom"/>
+            </FrameLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/priceForItemCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardCornerRadius="@dimen/card_corner_radius"
+            card_view:cardElevation="@dimen/card_elevation">
+
+
+            <FrameLayout
+                android:layout_marginTop="20dp"
+                android:id="@+id/priceForItemHolder"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:transitionName="tNameHolder"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="Средно по колко бройки закуски на ден произвеждаш?"
+                    android:layout_gravity="center_horizontal|top" />
+
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/averageItemsEditId"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/light_blue"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom"/>
+            </FrameLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/calculateEstimate"
+            android:layout_marginTop="20dp"
+            android:text="калкулирай"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+      />
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</android.support.v4.widget.NestedScrollView>
