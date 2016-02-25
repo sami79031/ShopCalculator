@@ -3,16 +3,22 @@ package com.thracecodeinc.shopcalculator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -31,6 +37,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.thracecodeinc.shopcalculator.helper.OnStartDragListener;
 import com.thracecodeinc.shopcalculator.helper.SimpleItemTouchHelperCallback;
@@ -40,15 +47,17 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements OnStartDragListener {
-
+    private Toolbar toolbar;
     private RecyclerView mRecyclerView;
     private StaggeredGridLayoutManager mStaggeredLayoutManager;
     private ShopListAdapter mAdapter;
     private JsonClass jsonClass;
     private ArrayList<ModelClass> modelList;
     private ItemTouchHelper mItemTouchHelper;
-    private int PICK_IMAGE_REQUEST = 1;
     private ImageView tabImage;
+    private Bitmap pref_image;
+    private String title = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,28 +73,16 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
         mAdapter = new ShopListAdapter(this, modelList);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setElevation(7);
 
 
         try {
-            String title = UserPrefs.getSavedPrefsTitle(this);
+             title = UserPrefs.getSavedPrefsTitle(this);
             if (!title.isEmpty())
-                getSupportActionBar().setTitle(title);
+                setTitle(title);
         }catch (NullPointerException e){}
-
-
-        toolbar.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                // Vibrate for 500 milliseconds
-                vibrator.vibrate(50);
-                titlePopup();
-                return false;
-            }
-        });
 
         //toolbar.setBackgroundColor(getResources().getColor(R.color.black_transparent));
 
@@ -96,26 +93,12 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
 
         tabImage = (ImageView) findViewById(R.id.tabBarImage);
 
-        Bitmap image = UserPrefs.getSavedPrefsImg(this);
-        if (image != null){
-            tabImage.setImageBitmap(image);
+        pref_image = UserPrefs.getSavedPrefsImg(this);
+        if (pref_image != null){
+            tabImage.setImageBitmap(pref_image);
         }
 
-        tabImage.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                // Vibrate for 500 milliseconds
-                vibrator.vibrate(50);
-                Intent intent = new Intent();
-                // Show only images, no videos or anything else
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                // Always show the chooser (if there are multiple options available)
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-                return false;
-            }
-        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,38 +145,10 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
-            Uri uri = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                Bitmap resized = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.6),
-                        (int) (bitmap.getHeight() * 0.6), true);
-
-                UserPrefs.saveTosharedPref(bitmap, "", this);
-
-                tabImage.setImageBitmap(resized);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
             super.onBackPressed();
-        }
     }
 
 
@@ -271,6 +226,9 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
             Intent intent = new Intent(MainActivity.this, CalculateForItem.class);
             startActivity(intent);
             return true;
+        } else if (id == R.id.customize){
+            Intent intent = new Intent(MainActivity.this, Customize.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -287,48 +245,6 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
-    }
-
-    public void titlePopup() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Въдеди нов надпис");
-        //alertDialog.setMessage();
-
-        // get prompts.xml view
-        LayoutInflater li = LayoutInflater.from(this);
-        View promptsView = li.inflate(R.layout.popup_dialog, null);
-        alertDialog.setView(promptsView);
-
-        final EditText input = (EditText) promptsView.findViewById(R.id.inputPopup);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
-        alertDialog.setPositiveButton("ГОТОВО",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        if (!input.getText().toString().isEmpty()) {
-                            UserPrefs.saveTosharedPref(null, input.getText().toString(), MainActivity.this);
-                        }
-
-
-
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
-                    }
-                });
-
-        alertDialog.setNegativeButton("ОТКАЗ",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
-                        dialog.cancel();
-                    }
-                });
-
-        alertDialog.show();
     }
 
 

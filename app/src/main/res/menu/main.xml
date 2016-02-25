@@ -8,4 +8,10 @@
         android:title="Калкулирай закуска"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/customize"
+        android:orderInCategory="100"
+        android:title="Персонализирай"
+        app:showAsAction="never" />
+
 </menu>

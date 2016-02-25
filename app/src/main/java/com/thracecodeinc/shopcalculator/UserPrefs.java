@@ -1,10 +1,14 @@
 package com.thracecodeinc.shopcalculator;
 
+import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Loader;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 
@@ -27,17 +31,25 @@ public class UserPrefs {
         return imageEncoded;
     }
 
-    public static void saveTosharedPref(Bitmap imageurl, String text, Context context){
+    public static void saveTosharedPref(final Bitmap imageurl, final String text, Context context){
         SharedPreferences myPrefrence = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = myPrefrence.edit();
+        final SharedPreferences.Editor editor = myPrefrence.edit();
 
-        if (!text.isEmpty()){
-            editor.putString("namePreferance", text);
-        }else if (imageurl != null){
-            editor.putString("imagePreferance", encodeTobase64(imageurl));
-        }
 
-        editor.apply();
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (!text.isEmpty()) {
+                    editor.putString("namePreferance", text);
+                }else if (imageurl != null){
+                    editor.putString("imagePreferance", encodeTobase64(imageurl));
+                }
+
+                editor.apply();
+            }
+        });
+
+
     }
 
     // method for base64 to bitmap
@@ -76,4 +88,5 @@ public class UserPrefs {
 
         return "";
     }
+
 }

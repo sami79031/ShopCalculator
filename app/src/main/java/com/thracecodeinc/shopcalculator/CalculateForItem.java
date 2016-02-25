@@ -39,6 +39,13 @@ public class CalculateForItem extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        try {
+            String title = UserPrefs.getSavedPrefsTitle(this);
+            if (!title.isEmpty()) {
+                setTitle(title);
+            }
+        }catch (NullPointerException e){}
+
         averageItems = (EditText) findViewById(R.id.averageItemsEditId);
         expenses = (EditText) findViewById(R.id.expesesEditId);
         materialUsed = (EditText) findViewById(R.id.materialEditId);
