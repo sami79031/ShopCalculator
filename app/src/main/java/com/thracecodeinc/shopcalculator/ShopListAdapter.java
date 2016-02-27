@@ -98,7 +98,7 @@ import java.util.Collections;
 
     public void popup(final String vid, final TextView txt, final int position, final TextView tl) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-        alertDialog.setTitle("Въдеди " + vid + " за " + modelClassesList.get(position).getKind());
+        alertDialog.setTitle("Въведи " + vid + " за " + modelClassesList.get(position).getKind());
         //alertDialog.setMessage();
 
         // get prompts.xml view

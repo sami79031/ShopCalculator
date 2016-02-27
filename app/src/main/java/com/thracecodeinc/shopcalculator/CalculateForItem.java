@@ -92,7 +92,7 @@ System.out.print("Pop up abover");
         System.out.print("Pop up inside the popup");
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Калкулирана цена за една закуска");
+        alertDialog.setTitle("Пресметната цена за една закуска");
         //alertDialog.setMess
         alertDialog.setInverseBackgroundForced(true);
 

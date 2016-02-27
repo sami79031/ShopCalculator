@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
 
     public void popupNewItem() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Въдеди нова закуска");
+        alertDialog.setTitle("Въведи нова закуска");
         //alertDialog.setMess
         alertDialog.setInverseBackgroundForced(true);
 
