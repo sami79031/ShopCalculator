@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
                         .coordinatorLayout);
 
                 Snackbar snackbar = Snackbar
-                        .make(coordinatorLayout, "Оборот за днес: " + total, Snackbar.LENGTH_INDEFINITE)
+                        .make(coordinatorLayout, getString(R.string.todays_total) + total, Snackbar.LENGTH_INDEFINITE)
                         .setAction("Изчисти", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
                                     m.setTotal("0.0");
                                 }
                                 mAdapter.notifyDataSetChanged();
-                                Snackbar snackbar1 = Snackbar.make(coordinatorLayout, "Изчистено", Snackbar.LENGTH_SHORT);
+                                Snackbar snackbar1 = Snackbar.make(coordinatorLayout, getString(R.string.cleared), Snackbar.LENGTH_SHORT);
                                 snackbar1.show();
                             }
                         });
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
 
     public void popupNewItem() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Въведи нова закуска");
+        alertDialog.setTitle(getString(R.string.enter_new_pastry));
         //alertDialog.setMess
         alertDialog.setInverseBackgroundForced(true);
 
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
 
-        alertDialog.setPositiveButton("ГОТОВО",
+        alertDialog.setPositiveButton(getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         float t = 0;
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
                     }
                 });
 
-        alertDialog.setNegativeButton("ОТКАЗ",
+        alertDialog.setNegativeButton(getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

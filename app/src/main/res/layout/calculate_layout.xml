@@ -21,7 +21,7 @@
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:text="Тук можеш да пресметнеш приблизителна цена за една закуска"
+            android:text="@string/here_you_can"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Въведи всички разходи за един мецес"
+                    android:text="@string/enter_monthly_expenses"
                     android:layout_gravity="center_horizontal|top" />
 
                 <TextView
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Наем/Електричество/вода/работна ръка/осигуровки т.н."
+                    android:text="@string/rent_etc"
                     android:layout_gravity="center" />
 
                 <EditText
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Въведи изразходен материал - брашно/олио/кашкавал т.н. "
+                    android:text="@string/enter_materials"
                     android:layout_gravity="center_horizontal|top" />
 
                 <TextView
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Приблизителна цена за 100 закуски"
+                    android:text="@string/approximate_price_100"
                     android:layout_gravity="center" />
 
                 <EditText
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Работни дни"
+                    android:text="@string/workdays"
                     android:layout_gravity="center_horizontal|top" />
 
                 <TextView
@@ -156,7 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Колко дена в месеца работиш?"
+                    android:text="@string/how_many_workdays"
                     android:layout_gravity="center" />
 
                 <EditText
@@ -197,7 +197,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="Средно по колко бройки закуски на ден произвеждаш?"
+                    android:text="@string/how_many_pastries"
                     android:layout_gravity="center_horizontal|top" />
 
                 <EditText

@@ -5,13 +5,13 @@
     <item
         android:id="@+id/calculate_for_item"
         android:orderInCategory="100"
-        android:title="Калкулирай закуска"
+        android:title="@string/calculate_pastry"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/customize"
         android:orderInCategory="100"
-        android:title="Персонализирай"
+        android:title="@string/personalize"
         app:showAsAction="never" />
 
 </menu>

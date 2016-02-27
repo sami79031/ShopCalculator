@@ -98,7 +98,7 @@ import java.util.Collections;
 
     public void popup(final String vid, final TextView txt, final int position, final TextView tl) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-        alertDialog.setTitle("Въведи " + vid + " за " + modelClassesList.get(position).getKind());
+        alertDialog.setTitle(mContext.getString(R.string.enter) + vid + mContext.getString(R.string.of) + modelClassesList.get(position).getKind());
         //alertDialog.setMessage();
 
         // get prompts.xml view
@@ -109,16 +109,16 @@ import java.util.Collections;
         final EditText input = (EditText) promptsView.findViewById(R.id.inputPopup);
         InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-        if (vid.equals("ЗАКУСКА")) input.setInputType(InputType.TYPE_CLASS_TEXT);
+        if (vid.equals(mContext.getString(R.string.pastry))) input.setInputType(InputType.TYPE_CLASS_TEXT);
 
 
-        alertDialog.setPositiveButton("ГОТОВО",
+        alertDialog.setPositiveButton(mContext.getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if (vid.equals("ЗАКУСКА")){
+                        if (vid.equals(mContext.getString(R.string.pastry))){
                             modelClassesList.get(position).setKind(String.valueOf(input.getText()));
                             txt.setText(input.getText());
-                        }else if(vid.equals("Цена")){
+                        }else if(vid.equals(mContext.getString(R.string.price))){
                             modelClassesList.get(position).setPrice(String.valueOf(input.getText()));
                             txt.setText(input.getText());
                         }else{
@@ -141,7 +141,7 @@ import java.util.Collections;
         alertDialog.setNegativeButton("ОТКАЗ",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
                         dialog.cancel();
                     }

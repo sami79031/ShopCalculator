@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Разходи за месец"
+                android:text="@string/expenses_per_month"
                 android:layout_gravity="left|top" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Разходи на ден"
+                android:text="@string/expenses_per_day"
                 android:layout_gravity="left|bottom" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Материал за 100бр"
+                android:text="@string/ingredients_per_100"
                 android:layout_gravity="left|top" />
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Материал за една закуска"
+                android:text="@string/ingredients_for_1"
                 android:layout_gravity="left|bottom" />
 
             <TextView
@@ -147,7 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
-            android:text="Добавяне на разходите"
+            android:text="@string/adding_expenses"
             android:layout_gravity="center_horizontal|top" />
 
         <TextView
@@ -156,7 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
-            android:text="Цена за една бройка"
+            android:text="@string/price_for_1"
             android:layout_gravity="left|bottom" />
 
         <TextView
@@ -166,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
-            android:text="една бройка"
+            android:text="@string/one"
             android:layout_gravity="right|bottom" />
     </FrameLayout>
 

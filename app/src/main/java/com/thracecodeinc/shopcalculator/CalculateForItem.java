@@ -92,7 +92,7 @@ System.out.print("Pop up abover");
         System.out.print("Pop up inside the popup");
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Пресметната цена за една закуска");
+        alertDialog.setTitle(getString(R.string.calculated_price));
         //alertDialog.setMess
         alertDialog.setInverseBackgroundForced(true);
 
@@ -102,17 +102,17 @@ System.out.print("Pop up abover");
         alertDialog.setView(promptsView);
 
         TextView mnthExp = (TextView) promptsView.findViewById(R.id.monthExpensesBrokeId);
-        mnthExp.setText(decimalFormat.format(expensMoth).concat("лв"));
+        mnthExp.setText(decimalFormat.format(expensMoth).concat(getString(R.string.currency)));
         TextView dalyExp = (TextView) promptsView.findViewById(R.id.dailyExpensesId);
-        dalyExp.setText(decimalFormat.format(expensDay).concat("лв"));
+        dalyExp.setText(decimalFormat.format(expensDay).concat(getString(R.string.currency)));
         TextView matr = (TextView) promptsView.findViewById(R.id.materialBrokeId);
-        matr.setText(decimalFormat.format(material).concat("лв"));
+        matr.setText(decimalFormat.format(material).concat(getString(R.string.currency)));
         TextView mtrForOne = (TextView) promptsView.findViewById(R.id.materialForItemId);
-        mtrForOne.setText(decimalFormat.format(priceForItem).concat("лв"));
+        mtrForOne.setText(decimalFormat.format(priceForItem).concat(getString(R.string.currency)));
         TextView finalPrice = (TextView) promptsView.findViewById(R.id.finalPrice);
-        finalPrice.setText(decimalFormat.format(priceFinal).concat("лв"));
+        finalPrice.setText(decimalFormat.format(priceFinal).concat(getString(R.string.currency)));
 
-        alertDialog.setNegativeButton("Благодаря",
+        alertDialog.setNegativeButton(getString(R.string.thank_you),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();

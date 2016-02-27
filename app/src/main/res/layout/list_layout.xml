@@ -19,8 +19,8 @@
 
         <TextView
             android:textColor="@color/dark_green"
-            android:tag="ЗАКУСКА"
-            android:hint="ВИД"
+            android:tag="@string/pastry"
+            android:hint="@string/type"
             android:padding="5dp"
             android:textAllCaps="true"
             android:textSize="18sp"
@@ -34,7 +34,7 @@
             android:tag="Цена"
             android:padding="5dp"
             android:textSize="14sp"
-            android:hint="0.0лв"
+            android:hint="@string/hint"
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:padding="5dp"
             android:textSize="14sp"
-            android:hint="0.0лв"
+            android:hint="@string/hint"
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:padding="5dp"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:text="Цена"
+            android:text="@string/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical" />
@@ -64,7 +64,7 @@
             android:padding="5dp"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:text="Бройки"
+            android:text="@string/number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_vertical" />
@@ -73,14 +73,14 @@
             android:padding="5dp"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:text="Тотал"
+            android:text="@string/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical" />
 
         <TextView
             android:textColor="@color/colorPrimaryDark"
-            android:tag="Бройка"
+            android:tag="@string/number"
             android:padding="5dp"
             android:textSize="14sp"
             android:hint="0бр"

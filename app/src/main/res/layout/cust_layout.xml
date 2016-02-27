@@ -52,7 +52,7 @@
         <Button
             android:layout_marginTop="30dp"
             android:textColor="#ffffff"
-            android:text="Запази"
+            android:text="@string/save"
             android:id="@+id/done_prefs"
             android:background="@drawable/buttonshape"
             android:layout_width="wrap_content"
