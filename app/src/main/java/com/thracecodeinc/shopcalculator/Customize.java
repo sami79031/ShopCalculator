@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 
 /**
  * Created by Samurai on 2/24/16.
