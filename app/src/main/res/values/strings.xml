@@ -37,6 +37,7 @@
     <string name="how_many_workdays">How many workdays per month?</string>
     <string name="how_many_pastries">How many pastries do you make per day?</string>
     <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
 
     <string name="calculated_price">Calculated cost of one pastry</string>
     <string name="currency"></string>

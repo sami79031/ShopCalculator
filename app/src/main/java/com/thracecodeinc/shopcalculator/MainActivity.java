@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
 
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, getString(R.string.todays_total) + total, Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Изчисти", new View.OnClickListener() {
+                        .setAction(getString(R.string.clear), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 for (ModelClass m : mAdapter.getArrayOfModels()) {

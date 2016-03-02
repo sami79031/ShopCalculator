@@ -215,7 +215,7 @@
         <Button
             android:id="@+id/calculateEstimate"
             android:layout_marginTop="20dp"
-            android:text="калкулирай"
+            android:text="@string/calculate"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:layout_gravity="center"
